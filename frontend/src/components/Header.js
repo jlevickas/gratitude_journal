@@ -10,7 +10,9 @@ const Header = () => {
       <Link to="/">Home</Link>
       <span> | </span>
       {!authTokens ? (
-        <Link to="/login">Log In</Link>
+        <div>
+          <Link to="/login">Log In</Link> | <Link to="/register">Register</Link>
+        </div>
       ) : (
         <button onClick={logoutUser}>Log Out</button>
       )}

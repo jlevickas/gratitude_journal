@@ -6,6 +6,7 @@ import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               }
             />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </AuthProvider>
       </Router>

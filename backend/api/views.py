@@ -11,8 +11,6 @@ from .serializers import JournalEntrySerializer
 class RouteList(views.APIView):
     def get(self, request, format=None):
         routes = [
-            'api/token',
-            'api/token/refresh',
             'api/entries',
             'api/entries/id ',
         ]

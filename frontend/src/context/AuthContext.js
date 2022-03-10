@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (e) => {
     e.preventDefault();
-    let response = await fetch("http://localhost:8000/api/token/", {
+    let response = await fetch("http://localhost:8000/auth/token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,14 +37,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  let logoutUser = async (e) => {
+  let logoutUser = async () => {
     localStorage.removeItem("authTokens");
     setAuthTokens(null);
     navigate("/login");
   };
 
   let updateToken = async () => {
-    let response = await fetch("http://localhost:8000/api/token/refresh/", {
+    let response = await fetch("http://localhost:8000/auth/token/refresh/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
