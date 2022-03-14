@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import Form from "../components/Form";
 
 const LoginPage = () => {
   let { loginUser } = useContext(AuthContext);
@@ -7,10 +9,11 @@ const LoginPage = () => {
   return (
     <div>
       <form onSubmit={loginUser}>
-        <input type="text" name="username" placeholder="Enter Username" />
-        <input type="password" name="password" placeholder="Enter password" />
-        <input type="submit" />
+        <Form />
       </form>
+      <Link to="/register">Don't have an account? Create one!</Link>
+      <br />
+      <Link to="/register">Don't remember your password? That sucks</Link>
     </div>
   );
 };

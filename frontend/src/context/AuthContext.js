@@ -16,14 +16,17 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (e) => {
     e.preventDefault();
+    let username = e.target.username.value;
+    let password = e.target.password.value;
+
     let response = await fetch("http://localhost:8000/auth/token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: e.target.username.value,
-        password: e.target.password.value,
+        username: username,
+        password: password,
       }),
     });
     let data = await response.json();
@@ -67,9 +70,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   let contextData = {
-    loginUser: loginUser,
-    logoutUser: logoutUser,
-    authTokens: authTokens,
+    loginUser,
+    logoutUser,
+    authTokens,
   };
 
   useEffect(() => {
