@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
+import SelectedEntry from "./SelectedEntry";
 import AuthContext from "../context/AuthContext";
 
 const EntryHistory = () => {
   let [entries, setEntries] = useState([]);
   let [date, setDate] = useState(new Date());
-  let [selectedDateEntry, setSelectedDateEntry] = useState();
 
   let { authTokens, logoutUser } = useContext(AuthContext);
 
@@ -34,22 +34,10 @@ const EntryHistory = () => {
     getEntries();
   }, []);
 
-  useEffect(() => {
-    entries.forEach((entry) => {
-      if (date.toLocaleDateString("sv") === entry.created) {
-        setSelectedDateEntry(entry.grateful_for);
-      } else {
-        setSelectedDateEntry(null);
-      }
-    });
-    console.log(selectedDateEntry);
-  }, [date]);
-
   return (
     <div>
       <Calendar value={date} onClickDay={setDate} />
-
-      {selectedDateEntry ? selectedDateEntry : <p> No entry that day :c</p>}
+      <SelectedEntry entries={entries} date={date} />
     </div>
   );
 };
