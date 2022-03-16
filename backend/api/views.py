@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework import views
+from rest_framework import serializers
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -24,3 +25,7 @@ class EntryViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         print(self.request.user.journalentry_set.all())
         return self.request.user.journalentry_set.all()
+
+    user = serializers.HiddenField(
+        default=serializers.CurrentUserDefault(),
+    )
